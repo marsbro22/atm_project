@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+void drawline(int x1, int y1, int x2, int y2)
+{
+int dx, dy, p, x, y;
+float m;
+dx=x2-x1;
+dy=y2-y1;
+x=x1;
+y=y1;
+p=2*dy-dx;
+m=dy/dx;
+if(m<1)
+{
+while(x<=x2)
+{
+if(p>=0)
+{
+putpixel(x,y,7);
+y=y+1;
+p=p+2*dy-2*dx;
+}
+else
+{
+putpixel(x,y,7);
+p=p+2*dy;
+}
+x=x+1;
+} }
+else
+{
+while(y<=y2)
+{
+if(p>=0)
+{
+putpixel(x,y,7);
+x=x+1;
+p=p+2*dx-2*dy;
+}
+else
+{
+putpixel(x,y,7);
+p=p+2*dx;
+}
+y=y+1;
+} } }
+void main()
+{
+int x1, y1, x2, y2, gd=DETECT, gm;
+initgraph(&gd,&gm,"c:\\TURBO3\\BGI");
+printf(“\n\t BRESENHAM LINE DRAWING ALGORITHM”);
+prinft(“\n\t-----------------------------------------------------------“);
+printf("Enter the co-ordinates of first point : ");
+scanf("%d %d", &x1,&y1);
+printf("Enter the co-ordinates of second point : ");
+scanf("%d %d", &x2,&y2);
+drawline(x1,y1,x2,y2);
+getch();
+closegraph();
+}
